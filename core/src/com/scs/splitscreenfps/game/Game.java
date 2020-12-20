@@ -24,18 +24,7 @@ import com.scs.splitscreenfps.game.entities.AbstractPlayersAvatar;
 import com.scs.splitscreenfps.game.entities.TextEntity;
 import com.scs.splitscreenfps.game.input.IInputMethod;
 import com.scs.splitscreenfps.game.levels.AbstractLevel;
-import com.scs.splitscreenfps.game.levels.AlienTagLevel;
-import com.scs.splitscreenfps.game.levels.BladeRunnerLevel;
-import com.scs.splitscreenfps.game.levels.CarParkLevel;
-import com.scs.splitscreenfps.game.levels.DeathChaseLevel;
-import com.scs.splitscreenfps.game.levels.DungeonLevel;
-import com.scs.splitscreenfps.game.levels.FTLLevel;
-import com.scs.splitscreenfps.game.levels.FunnyFarmLevel;
 import com.scs.splitscreenfps.game.levels.MonsterMazeLevel;
-import com.scs.splitscreenfps.game.levels.QuantumLeagueLevel;
-import com.scs.splitscreenfps.game.levels.StartLevel;
-import com.scs.splitscreenfps.game.levels.StockCarLevel;
-import com.scs.splitscreenfps.game.levels.TowerDefenceLevel;
 import com.scs.splitscreenfps.game.systems.AnimationSystem;
 import com.scs.splitscreenfps.game.systems.CollisionCheckSystem;
 import com.scs.splitscreenfps.game.systems.CycleThroughModelsSystem;
@@ -47,7 +36,6 @@ import com.scs.splitscreenfps.game.systems.DrawTextIn3DSpaceSystem;
 import com.scs.splitscreenfps.game.systems.DrawTextSystem;
 import com.scs.splitscreenfps.game.systems.MoveAStarSystem;
 import com.scs.splitscreenfps.game.systems.MovementSystem;
-import com.scs.splitscreenfps.game.systems.PickupDropSystem;
 import com.scs.splitscreenfps.game.systems.PlayerInputSystem;
 import com.scs.splitscreenfps.game.systems.RemoveEntityAfterTimeSystem;
 import com.scs.splitscreenfps.game.systems.RespawnSystem;
@@ -98,41 +86,8 @@ public class Game implements IModule {
 		}
 
 		switch (Settings.CURRENT_MODE) {
-		case Settings.MODE_ALIEN_TAG:
-			currentLevel = new AlienTagLevel(this);
-			break;
 		case Settings.MODE_MONSTER_MAZE:
 			currentLevel = new MonsterMazeLevel(this);
-			break;
-		case Settings.MODE_DUNGEON:
-			currentLevel = new DungeonLevel(this);
-			break;
-		case Settings.MODE_FUNNY_FARM:
-			currentLevel = new FunnyFarmLevel(this);
-			break;
-		case Settings.MODE_FTL:
-			currentLevel = new FTLLevel(this);
-			break;
-		case Settings.MODE_CAR_PARK:
-			currentLevel = new CarParkLevel(this);
-			break;
-		case Settings.MODE_DEATHCHASE:
-			currentLevel = new DeathChaseLevel(this);
-			break;
-		case Settings.MODE_TOWER_DEFENCE:
-			currentLevel = new TowerDefenceLevel(this);
-			break;
-		case Settings.MODE_BLADE_RUNNER:
-			currentLevel = new BladeRunnerLevel(this);
-			break;
-		case Settings.MODE_STOCK_CAR:
-			currentLevel = new StockCarLevel(this);
-			break;
-		case Settings.MODE_START:
-			currentLevel = new StartLevel(this);
-			break;
-		case Settings.MODE_QUANTUM_LEAGUE:
-			currentLevel = new QuantumLeagueLevel(this);
 			break;
 		default:
 			throw new RuntimeException("Unknown mode: " + Settings.CURRENT_MODE);
@@ -180,7 +135,6 @@ public class Game implements IModule {
 		ecs.addSystem(new MoveAStarSystem(ecs, this));
 		this.drawModelSystem = new DrawModelSystem(this, ecs); 
 		ecs.addSystem(this.drawModelSystem);
-		ecs.addSystem(new PickupDropSystem(ecs, this));
 		ecs.addSystem(new DrawTextIn3DSpaceSystem(ecs, this, batch2d));
 		respawnSystem = new RespawnSystem(ecs, this); 
 		ecs.addSystem(respawnSystem);
@@ -231,7 +185,6 @@ public class Game implements IModule {
 		this.ecs.getSystem(MoveAStarSystem.class).process();
 		this.ecs.getSystem(MovementSystem.class).process();
 		this.ecs.getSystem(AnimationSystem.class).process();
-		this.ecs.getSystem(PickupDropSystem.class).process();
 		this.ecs.getSystem(CycleThruDecalsSystem.class).process();
 		this.ecs.getSystem(CycleThroughModelsSystem.class).process();
 
