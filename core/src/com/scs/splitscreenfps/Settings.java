@@ -22,11 +22,11 @@ public class Settings {
 	
 	public static final boolean RELEASE_MODE = new File("../../debug_mode.tmp").exists() == false;
 
-	public static int CURRENT_MODE = RELEASE_MODE ? MODE_START : MODE_QUANTUM_LEAGUE;
+	public static int CURRENT_MODE = MODE_MONSTER_MAZE;//RELEASE_MODE ? MODE_START : MODE_QUANTUM_LEAGUE;
 	public static final String VERSION = "1.01";
 	
 	// Debugging Hacks
-	public static final boolean AUTO_START = !RELEASE_MODE && true;
+	public static final boolean AUTO_START = !RELEASE_MODE && false;
 	public static final boolean START_4_PLAYERS = !RELEASE_MODE && false;
 	public static final boolean SMALL_MAP = !RELEASE_MODE && false;
 	public static final boolean TEST_SCREEN_COORDS = !RELEASE_MODE && false;
@@ -62,32 +62,8 @@ public class Settings {
 		}
 		
 		switch (CURRENT_MODE) {
-		case MODE_ALIEN_TAG:
-			TITLE = "Tag";
-			break;
 		case MODE_MONSTER_MAZE:
 			TITLE = "3D Monster Maze";
-			break;
-		case MODE_FUNNY_FARM:
-			TITLE = "The Funny Farm";
-			break;
-		case MODE_FTL:
-			TITLE = "FTL";
-			break;
-		case MODE_CAR_PARK:
-			TITLE = "Crazy car Park";
-			break;
-		case MODE_DEATHCHASE:
-			TITLE = "3D Death Chase";
-			break;
-		case MODE_TOWER_DEFENCE:
-			TITLE = "Tower Defence";
-			break;
-		case MODE_BLADE_RUNNER:
-			TITLE = "Bladerunner";
-			break;
-		case MODE_STOCK_CAR:
-			TITLE = "Stock Car Racer";
 			break;
 		default:
 			TITLE = "[Unknown]";

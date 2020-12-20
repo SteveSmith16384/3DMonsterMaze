@@ -84,8 +84,9 @@ public class Game implements IModule {
 		main = _main;
 		inputs = _inputs;
 
-		BillBoardFPS_Main.audio.startMusic("shared/Heroic Demise (New).mp3");
-
+		//BillBoardFPS_Main.audio.startMusic("shared/Heroic Demise (New).mp3");
+		BillBoardFPS_Main.audio.stopMusic();
+		
 		game_stage = 0;
 		batch2d = new SpriteBatch();
 		this.createECS();
@@ -207,13 +208,13 @@ public class Game implements IModule {
 	@Override
 	public void render() {
 		if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
-			if (Settings.CURRENT_MODE == Settings.MODE_START) {
+			//if (Settings.CURRENT_MODE == Settings.MODE_START) {
 				this.main.next_module = new PreGameScreen(main);
-			} else {
+			/*} else {
 				Settings.CURRENT_MODE = Settings.MODE_START;
 				this.main.next_module = new Game(main, this.inputs);
 			}
-		}
+*/		}
 
 		if (this.game_stage == 1) {
 			if (this.restartTime < System.currentTimeMillis()) {

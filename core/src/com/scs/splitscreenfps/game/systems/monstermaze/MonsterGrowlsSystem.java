@@ -16,7 +16,7 @@ public class MonsterGrowlsSystem implements ISystem {
 	public void process() {
 		if (System.currentTimeMillis() > next_time) {
 			BillBoardFPS_Main.audio.play("monstermaze/sfx/Large Monster_1/Large Monster " + NumberFunctions.rnd(1, 4) + ".wav");
-			next_time = System.currentTimeMillis() + NumberFunctions.rnd(4000, 8000);
+			next_time = System.currentTimeMillis() + NumberFunctions.rnd(12000, 20000);
 		}
 
 	}
