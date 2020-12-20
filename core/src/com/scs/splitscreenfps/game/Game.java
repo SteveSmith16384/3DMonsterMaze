@@ -36,6 +36,7 @@ import com.scs.splitscreenfps.game.systems.DrawTextIn3DSpaceSystem;
 import com.scs.splitscreenfps.game.systems.DrawTextSystem;
 import com.scs.splitscreenfps.game.systems.MoveAStarSystem;
 import com.scs.splitscreenfps.game.systems.MovementSystem;
+import com.scs.splitscreenfps.game.systems.PickupDropSystem;
 import com.scs.splitscreenfps.game.systems.PlayerInputSystem;
 import com.scs.splitscreenfps.game.systems.RemoveEntityAfterTimeSystem;
 import com.scs.splitscreenfps.game.systems.RespawnSystem;
@@ -135,6 +136,7 @@ public class Game implements IModule {
 		ecs.addSystem(new MoveAStarSystem(ecs, this));
 		this.drawModelSystem = new DrawModelSystem(this, ecs); 
 		ecs.addSystem(this.drawModelSystem);
+		ecs.addSystem(new PickupDropSystem(ecs, this));
 		ecs.addSystem(new DrawTextIn3DSpaceSystem(ecs, this, batch2d));
 		respawnSystem = new RespawnSystem(ecs, this); 
 		ecs.addSystem(respawnSystem);
@@ -185,6 +187,7 @@ public class Game implements IModule {
 		this.ecs.getSystem(MoveAStarSystem.class).process();
 		this.ecs.getSystem(MovementSystem.class).process();
 		this.ecs.getSystem(AnimationSystem.class).process();
+		this.ecs.getSystem(PickupDropSystem.class).process();
 		this.ecs.getSystem(CycleThruDecalsSystem.class).process();
 		this.ecs.getSystem(CycleThroughModelsSystem.class).process();
 
@@ -323,6 +326,8 @@ public class Game implements IModule {
 			}
 		}
 		loadWinLoseText();
+		
+		BillBoardFPS_Main.audio.play("monstermaze/sfx/VictoryMusic.wav");
 	}
 
 

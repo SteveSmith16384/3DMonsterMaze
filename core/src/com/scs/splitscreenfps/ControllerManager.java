@@ -79,6 +79,7 @@ public class ControllerManager implements ControllerListener {
 				if (this.inGameControllers.size() < this.max_controllers) {
 					if (this.inGameControllers.contains(controller) == false) {
 						this.inGameControllers.add(controller);
+						BillBoardFPS_Main.audio.play("monstermaze/sfx/Collect_Point_01.wav");
 					}
 				} else {
 					System.err.println("maximum controllers reached");

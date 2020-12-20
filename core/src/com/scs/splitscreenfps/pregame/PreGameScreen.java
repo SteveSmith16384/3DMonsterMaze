@@ -200,6 +200,7 @@ public class PreGameScreen implements IModule {
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && keyboard_player_joined == false) {
 			this.keyboard_player_joined = true;
 			this.appendToLog("Keyboard player joined!");
+			BillBoardFPS_Main.audio.play("monstermaze/sfx/Collect_Point_01.wav");
 		} else if (Gdx.input.isKeyJustPressed(Keys.S)) {
 			this.startGame();
 		/*} else if (Gdx.input.isKeyJustPressed(Keys.NUM_1) && Settings.FIXED_GAME == false) {

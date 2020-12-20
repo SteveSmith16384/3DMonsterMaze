@@ -7,7 +7,7 @@ import ssmith.lang.NumberFunctions;
 
 public class MonsterGrowlsSystem implements ISystem {
 
-	private long next_time = 0;
+	private long next_time = System.currentTimeMillis() + 5000;
 
 	public MonsterGrowlsSystem() {
 	}
