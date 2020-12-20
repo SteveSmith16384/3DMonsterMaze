@@ -1,3 +1,0 @@
-#Tower Defence Config
-bullet_speed=20
-turret_range=5
